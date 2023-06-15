@@ -1,0 +1,4 @@
+name = "HexLerp"
+
+[[fetch]]
+files = [ "hexlerp/__init__.py"]

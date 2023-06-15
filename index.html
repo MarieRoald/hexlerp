@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>HexLerp</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://pyscript.net/releases/2023.03.1/pyscript.css" />
+    <link rel="stylesheet" href="assets/style.css" />
+    <script defer src="https://pyscript.net/releases/2023.03.1/pyscript.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Silkscreen">
+    
+</head>
+<body>
+    <h1>HexLerp</h1>
+    <py-config src="assets/pyscript.toml"></py-config>
+    <py-script src="assets/main.py"></py-script>
+    
+    <div class="input_container" id="left_col">
+    <form id="my_form">
+        <div class="container inputContainer" id="start_color_container">    
+            <h2>Start colour</h2>
+            <input type="color" id="c1_picker" name="Color 1" value="#000000" required>
+            <input type="text" size=7 maxlength=7 pattern="#?[0-9a-fA-F]{6}" id="c1_hex" placeholder="#000000" required>
+            <input type="text" size=18 id="c1_lab" placeholder="(0.0000, 0.0000, 0.0000)">
+        </div>
+        
+        <div class="container input_container" id="end_color_container">
+            <h2>End colour</h2>
+            <input type="color" id="c2_picker" name="Color 2"  value="#FFFFFF" required>
+            <input type="text" size=7 maxlength=7 pattern="#?[0-9a-fA-F]{6}" id="c2_hex" placeholder="#FFFFFF" required>
+            <input type="text" size=18 id="c2_lab" placeholder="(8.9914, -0.2995, -0.0021)">
+        </div>
+
+        <div class="container input_container">
+            <h2>Interpolation value: </h2>
+            <h3>(Between 0 and 1)</h3>            
+            <p>
+                <input type="number" size=15 min=0 max=1 step=0.01 id="lerp_value_output" value=0.5 required>
+            </p>
+            <input type="range" min=0 max=1 step=0.01 id="lerp_value" placeholder=0.5 required>
+        </div>
+    </form>
+    </div>
+    
+    <div id="right_col">
+        <div class="container" id="output">
+            <h2>Interpolated colour</h2>
+            <h3>HEX</h3>
+            <span id="output_hex">#BBBBBB</span>
+            <h3>LAB</h3>
+            <span id="output_lab">(4.4888, -0.2018, 0.0001)</span>
+         </div>   
+        
+        <div class="container">
+            <h2>What is this?</h2>
+            <p>HexLerp interpolates between two colours in a <a href="https://programmingdesignsystems.com/color/perceptually-uniform-color-spaces/">perceptually meaningful way</a> by performing the interpolation in the <a href="https://en.wikipedia.org/wiki/CIELAB_color_space">CIELAB</a> colour space.</p>
+            <p>You can use the colour picker, type in HEX values or type in LAB values -- the other colour representations will automatically update.</p>
+            <p>The interpolation value specifies how close the interpolated value should be to the start/end point (0 being equal to start and 1 being equal to end).</p>
+            <p>This app is powered by <a href="https://pyscript.net">PyScript</a>, a Python runtime for the browser. This is mostly a fun project to learn about PyScript and there are still some bugs to sort out :)</p>
+            <p>You can view the source code on <a href="https://github.com/marieroald/hexlerp">GitHub</a></p>
+        </div>
+    </div>
+</body>
+</html>

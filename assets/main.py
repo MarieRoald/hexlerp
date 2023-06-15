@@ -4,7 +4,7 @@ import re
 from js import document
 from pyodide.ffi import create_proxy
 
-import hexlerp
+import hexlerp.hexlerp as hexlerp  # Because GitHub Pages won't serve __init__.py
 
 
 def random_light_hex():
